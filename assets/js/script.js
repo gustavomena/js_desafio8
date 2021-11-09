@@ -26,14 +26,16 @@ function Consultorio(name, patients) {
 
 //Metodos solicitados, agregar paciente y buscar paciente
 Consultorio.prototype.addPatient = function (paciente) {
-  return this.Patients.push(paciente);
+   
+  this.Patients.push(paciente);
+  console.table(this.Patients);
 };
 Consultorio.prototype.searchPatient = function(name) {
     console.table(this.Patients.filter(patient => patient._name == name));
 }
 
 //datos de prueba
-let consultorio = new Consultorio("Centro medico Ñuñoa", [
+let consultorio = new Consultorio("CESFAM", [
     new Patient("Juan", 25, "12345678-1", "diabetes"),
     new Patient ("Pedro", 30 , "12225554-7", "Lupus"),
     new Patient ("Pedro", 30 , "12225554-7", "Covid-19"),
@@ -44,14 +46,17 @@ let consultorio = new Consultorio("Centro medico Ñuñoa", [
 
 
 //f(x)'s de prueba
-consultorio.searchPatient("Cristóbal")
-consultorio.name="nombre Consultorio";
-console.log(consultorio.Name)
+const nombre=prompt("Ingrese el nombre a buscar:");
+consultorio.searchPatient(nombre);
 
 
 
-console.log(consultorio.addPatient(new Patient("Nicolás", 24, "12345678-1", "Acné")))
-consultorio._nombre = 'hola'
-console.log(consultorio.Name)
+const patientName= prompt("Ingrese Nombre paciente");
+const patientAge= parseInt(prompt("ingrese edad:"));
+const patientRut= prompt("ingrese rut del paciente");
+const patientIllness=prompt("ingrese patologia")
+
+console.log(consultorio.addPatient(new Patient(patientName, patientAge, patientRut, patientIllness)));
+
 
 
